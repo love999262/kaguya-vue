@@ -23,7 +23,7 @@ export default {
 </script>
 
 <style lang="scss">
-    @import './../style/index.scss';
+    @import './../style/global.scss';
     .#{$kaguya} {
         &-search {
             opacity: 0.9;

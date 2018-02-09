@@ -29,7 +29,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-    @import './../style/index.scss';
+    @import './../style/global.scss';
     .#{$kaguya}-img {
         position: fixed;
         top: 0;
