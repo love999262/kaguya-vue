@@ -6,8 +6,8 @@
 </template>
 
 <script>
-import Background from './Background'
-import Navigator from './Navigator'
+import Background from './Background';
+import Navigator from './Navigator';
 export default {
   name: 'Kaguya',
   components: {
@@ -17,9 +17,9 @@ export default {
   data () {
     return {
       msg: 'Welcome to Your Vue.js App'
-    }
+    };
   }
-}
+};
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->

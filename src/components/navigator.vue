@@ -1,13 +1,13 @@
 <template>
-    <div v-bind:class="`${this.prefix}-search`">
+    <div :class="`${prefix}-search`">
         <searchengle></searchengle>
         <navigates></navigates>
     </div>
 </template>
 
 <script>
-import Navigates from './navigates'
-import Searchengle from './searchengle'
+import Navigates from './navigates';
+import Searchengle from './searchengle';
 export default {
     name: 'navigator',
     components: {
@@ -16,13 +16,13 @@ export default {
     },
     data () {
         return {
-            prefix: `kaguya-search`
-        }
+            prefix: 'kaguya'
+        };
     }
-}
+};
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
     @import './../style/index.scss';
     .#{$kaguya} {
         &-search {

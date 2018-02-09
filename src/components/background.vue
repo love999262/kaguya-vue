@@ -1,5 +1,5 @@
 <template>
-    <div v-bind:class="`${prefix}-img`" v-bind:style="bgImgStyle"></div>
+    <div :class="`${prefix}-img`" :style="bgImgStyle"></div>
 </template>
 
 <script>
@@ -12,20 +12,20 @@ export default {
             localPicDir: '../img/',
             qiniuURL: 'http://omltgvp37.bkt.clouddn.com/',
             totalPic: 830
-        }
+        };
     },
 
     computed: {
 
     },
     created: function () {
-        this.assets = this.isLocal ? this.localPicDir : this.qiniuURL
-        this.num = Math.round(Math.random() * this.totalPic)
+        this.assets = this.isLocal ? this.localPicDir : this.qiniuURL;
+        this.num = Math.round(Math.random() * this.totalPic);
         this.bgImgStyle = {
             backgroundImage: `url(${this.assets}bg${this.num.toString()}.jpg)`
-        }
+        };
     }
-}
+};
 </script>
 
 <style lang="scss" scoped>
