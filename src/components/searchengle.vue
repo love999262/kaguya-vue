@@ -134,6 +134,123 @@
 </script>
 
 
-<style>
-
+<style lang="scss" scoped>
+    @import './../style/global.scss';
+    .#{$kaguya} {
+        &-search {
+            &-bar {
+                height: $h;
+                @include setShadow;
+                display: flex;
+                align-items: center;
+                margin: 0 auto;
+                &-container {
+                    height: inherit;
+                    float: left;
+                    &-btn {
+                        height: inherit;
+                        float: left;
+                        // border: 1px solid $btn-border-color;
+                        background-color: $btn-color;
+                        cursor: pointer;
+                        padding: 6px 12px;
+                        &:hover {
+                            background-color: $btn-hover-color;
+                            border-color: $btn-border-color;
+                        }
+                        &:active {
+                            background-color: $btn-active-color;
+                            border-color: $btn-active-border-color;
+                        }
+                    }
+                    &-panel {
+                        height: inherit;
+                        float: left;
+                        border: 1px solid $btn-border-color;
+                        background: url(../images/down.svg) 5px 10px no-repeat;
+                        background-size: 12px;
+                        line-height: 36px;
+                        width: 24px;
+                        background-color: $btn-color;
+                        cursor: pointer;
+                        padding: 6px 8px;
+                        &:hover {
+                            background-color: $btn-hover-color;
+                            border-color: $btn-border-color;
+                        }
+                        &:active {
+                            background-color: $btn-active-color;
+                            border-color: $btn-active-border-color;
+                        }
+                    }
+                    &-dropmenu {
+                        position: absolute;
+                        background-color: $white;
+                        color: $dark;
+                        top: calc(100% + .5rem);
+                        z-index: 9999999;
+                        @include setShadow;
+                        &-searchengine {
+                            color: $dark;
+                            padding: 10px 30px;
+                            border-bottom: 1px solid $gray;
+                            cursor: pointer;
+                            &:hover {
+                                background-color: $gray;
+                            }
+                        }
+                    }
+                }
+                &-input {
+                    height: $h;
+                    width: $input-w;
+                    float: left;
+                    color: $dark;
+                    // border: 1px solid $gray;
+                    text-indent: .5rem;
+                }
+                &-btn {
+                    width: $h;
+                    height: $h;
+                    float: left;
+                    cursor: pointer;
+                    color: $white;
+                    background: url(../images/search.svg) 2px 8px no-repeat;
+                    background-color: #5BC0DE;
+                    background-size: 32px;
+                    &:hover {
+                        background-color: $btn-hover-color;
+                        border-color: $btn-border-color;
+                    }
+                    &:active {
+                        background-color: $btn-active-color;
+                        border-color: $btn-active-border-color;
+                    }
+                }
+                &-search-history {
+                    display: none;
+                    width: 560px;
+                    position: absolute;
+                    top: 46px;
+                    background: rgba(255,255,255,.9);
+                    @include setShadow;
+                    z-index: 99;
+                    overflow: hidden;
+                    &-list{
+                        color: $dark;
+                        text-align: left;
+                        text-indent: .5rem;
+                        border-bottom: 1px solid $gray;
+                        height: 32px;
+                        line-height: 32px;
+                        &:hover {
+                            background-color: $b-blue !important;
+                            color: $white;
+                            cursor: pointer;
+                        }
+                    }
+                }
+            }
+        }
+    }
 </style>
