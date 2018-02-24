@@ -10,26 +10,30 @@
 </template>
 
 <script>
-import websites from './websites';
-import utils from './utils';
-export default {
-    name: 'navigates',
-    components: {
-        utils
-    },
-    methods: {
-        handleNavClick: function (href) {
-            window.open(href);
+    import { mapState } from 'vuex';
+    import utils from './utils';
+    export default {
+        name: 'navigates',
+        components: {
+            utils
+        },
+        methods: {
+            handleNavClick: function (href) {
+                window.open(href);
+            }
+        },
+        computed: {
+            ...mapState({
+                websites: state => state.websites.websites
+            })
+        },
+        data () {
+            return {
+                prefix: 'kaguya-search',
+                getRandomColor: utils.getRandomColor
+            };
         }
-    },
-    data () {
-        return {
-            prefix: 'kaguya-search',
-            getRandomColor: utils.getRandomColor,
-            websites: websites
-        };
-    }
-};
+    };
 </script>
 
 

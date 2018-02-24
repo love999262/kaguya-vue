@@ -1,7 +1,7 @@
 <template>
     <div :class="`${prefix}-bar`">
         <button :class="`${prefix}-bar-container-btn`" @click="handleContainerBtnClick">
-            {{search.searchBtnName}}
+            {{getCurrentSearchEngle.name}}
         </button>
         <ul :class="`${prefix}-bar-container-dropmenu`" :style="dropmenuStyle">
             <li v-for="item in searchEngineList" :key="item.name" :class="`${prefix}-bar-container-dropmenu-searchengine`" @click="handleEngleClick(item)">
@@ -22,17 +22,26 @@
 </template>
 
 <script>
-    import searchEngineList from './searchengle-list.js';
+    import { mapState, mapGetters } from 'vuex';
     import utils from './utils';
+
     export default {
         name: 'searchengle',
         components: {
-            searchEngineList,
+            // searchEngineList,
             utils
+        },
+        computed: {
+            ...mapState({
+                searchEngineList: state => state.searchengle.searchEngineList
+            }),
+            ...mapGetters({
+                getCurrentSearchEngle: 'getCurrentSearchEngle'
+            })
         },
         methods: {
             handleContainerBtnClick: function () {
-                window.open(this.search.searchBtnHref);
+                window.open(this.getCurrentSearchEngle.href);
             },
             handleContainerPanelClick: function () {
                 this.dropmenuStyle = {
@@ -59,7 +68,7 @@
                     console.log('inputVal', this.inputVal);
                     const val = typeof listInfo === 'string' ? encodeURIComponent(listInfo) : encodeURIComponent(this.inputVal);
                     console.log('val', val);
-                    window.open(this.search.searchInterface + val);
+                    window.open(this.getCurrentSearchEngle.interface + val);
                     const searchHistory = this.searchArray.slice();
                     for (let i = 0; i < searchHistory.length; i++) {
                         if (this.inputVal === searchHistory[i]) {
@@ -74,11 +83,12 @@
                 this.inputVal = e.target.value;
             },
             handleEngleClick: function (engine) {
-                this.search = {
-                    searchInterface: engine.url,
-                    searchBtnHref: engine.href,
-                    searchBtnName: engine.name
-                };
+                this.$store.commit({
+                    type: 'updateCurrentEngle',
+                    url: engine.url,
+                    href: engine.href,
+                    name: engine.name
+                });
                 this.dropmenuStyle = {
                     display: this.dropmenuStyle.display === 'none' ? 'block' : 'none'
                 };
@@ -88,13 +98,7 @@
         data () {
             return {
                 prefix: 'kaguya-search',
-                search: {
-                    searchInterface: 'https://www.baidu.com/s?wd=',
-                    searchBtnHref: 'https://www.baidu.com/',
-                    searchBtnName: 'baidu',
-                    searchEngleList: searchEngineList
-                },
-                searchEngineList: searchEngineList,
+
                 utils: utils,
                 inputVal: '',
                 searchArray: [],
