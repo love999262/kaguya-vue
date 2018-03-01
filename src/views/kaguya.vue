@@ -1,20 +1,15 @@
 <template>
     <div class="kaguya">
         <navlist v-if="showNavList" :name="navlist"></navlist>
-        <background></background>
-        <navigator></navigator>
+        <router-view></router-view>
     </div>
 </template>
 
 <script>
 import navlist from './../components/nav-list';
-import background from './../components/Background';
-import navigator from './/Navigator';
 export default {
   name: 'Kaguya',
   components: {
-    background,
-    navigator,
     navlist
   },
   methods: {
@@ -35,7 +30,7 @@ export default {
     };
   },
   created: function () {
-    // this.bindEvent(40);
+    this.bindEvent(40);
   }
 };
 </script>
